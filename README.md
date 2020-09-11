@@ -18,3 +18,5 @@ To run the application, go to the project root directory and execute in your ter
     yarn start
 
 #### The application is running! Enjoy it!
+
+#### I am still developing this project...

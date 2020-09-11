@@ -3,13 +3,17 @@ import './App.css';
 
 import Header from './components/Header/Header';
 import Container from './components/Container/Container';
+import Card from './components/Card/Card';
+import Input from './components/Input/Input';
 
 function App() {
   return (
     <>
       <Header title="Simple Todo List" />
       <Container>
-        <h2>Insira a nova tarefa</h2>
+        <Card>
+          <Input />
+        </Card>
       </Container>
     </>
   );
