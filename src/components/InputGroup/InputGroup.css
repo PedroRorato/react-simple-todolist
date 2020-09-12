@@ -1,0 +1,12 @@
+input {
+    border: 1px solid #bbb;
+    border-radius: .25rem;
+    font-size: 1rem;
+    padding: .375rem .75rem;
+}
+
+.input-group {
+    display: grid;
+    grid-template-columns: 1fr 80px;
+    column-gap: 1rem;
+}

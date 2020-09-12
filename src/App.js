@@ -4,7 +4,7 @@ import './App.css';
 import Header from './components/Header/Header';
 import Container from './components/Container/Container';
 import Card from './components/Card/Card';
-import Input from './components/Input/Input';
+import InputGroup from './components/InputGroup/InputGroup';
 
 function App() {
   return (
@@ -12,7 +12,7 @@ function App() {
       <Header title="Simple Todo List" />
       <Container>
         <Card>
-          <Input />
+          <InputGroup />
         </Card>
       </Container>
     </>
