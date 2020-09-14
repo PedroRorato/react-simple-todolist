@@ -1,0 +1,11 @@
+.list-item {
+    align-items: center;
+    background: #ddd;
+    margin-bottom: .25rem;
+    padding: 1rem;
+    
+    display: grid;
+    grid-template-columns: 20px 1fr 36px 36px;
+    column-gap: .75rem;
+
+}

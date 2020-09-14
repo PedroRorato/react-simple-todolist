@@ -7,7 +7,7 @@ export default function InputGroup() {
     return (
         <div className="input-group">
             <input type="text" placeholder="New task title" />
-            <Button title="ADD"/>
+            <Button title="ADD" className="primary" />
         </div>
     );
 };

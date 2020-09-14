@@ -5,6 +5,8 @@ import Header from './components/Header/Header';
 import Container from './components/Container/Container';
 import Card from './components/Card/Card';
 import InputGroup from './components/InputGroup/InputGroup';
+import List from './components/List/List';
+import ListItem from './components/ListItem/ListItem';
 
 function App() {
   return (
@@ -13,6 +15,12 @@ function App() {
       <Container>
         <Card>
           <InputGroup />
+          <List>
+            <ListItem />
+            <ListItem />
+            <ListItem />
+            <ListItem />
+          </List>
         </Card>
       </Container>
     </>
