@@ -6,7 +6,7 @@ import Button from '../Button/Button';
 export default function InputGroup() {
     return (
         <div className="input-group">
-            <input type="text" placeholder="New task title" />
+            <input type="text" placeholder="New task..." />
             <Button title="ADD" className="primary" />
         </div>
     );

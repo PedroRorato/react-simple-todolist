@@ -1,5 +1,7 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import './App.css';
+
+import api from './services/api';
 
 import Header from './components/Header/Header';
 import Container from './components/Container/Container';
@@ -9,6 +11,17 @@ import List from './components/List/List';
 import ListItem from './components/ListItem/ListItem';
 
 function App() {
+
+  const [tasks, setTasks] = useState([]);
+
+  useEffect( () => {
+
+    api.get('/task').then( response => {
+      setTasks(response.data);
+    });
+
+  }, [])
+
   return (
     <>
       <Header title="Simple Todo List" />
@@ -16,10 +29,7 @@ function App() {
         <Card>
           <InputGroup />
           <List>
-            <ListItem />
-            <ListItem />
-            <ListItem />
-            <ListItem />
+            { tasks.map( task => <ListItem title={task.title} />)}
           </List>
         </Card>
       </Container>

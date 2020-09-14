@@ -11,7 +11,7 @@ export default function ListItem(props) {
                 <label for="fruit3"></label>
             </div>
             
-            <h3>Tarefa</h3>
+            <h3>{props.title}</h3>
             <Button className="primary">
                 <i className="fa fa-edit"></i>
             </Button>
