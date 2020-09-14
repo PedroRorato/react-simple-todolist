@@ -1,0 +1,20 @@
+.alert {
+    
+    border-radius: .25rem;
+    display: flex;
+    font-size: 1rem;
+    font-weight: bold;
+    justify-content: center;
+    margin: .5rem 0;
+    padding: 1rem 0;
+}
+
+.alert-primary {
+    background-color: #a4d5f4;
+    color: #0b3c5b;
+}
+
+.alert-danger {
+    background-color: #f0a8af;
+    color: #570f16;
+}
