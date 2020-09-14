@@ -5,7 +5,41 @@
     padding: 1rem;
     
     display: grid;
-    grid-template-columns: 20px 1fr 36px 36px;
+    grid-template-columns: 25px 1fr 36px 36px;
     column-gap: .75rem;
 
+}
+
+input[type=checkbox] {
+    display: none;
+}
+
+input[type=checkbox] + label {
+    display: block;
+    cursor: pointer;
+}
+
+input[type=checkbox] + label:before {
+    background-color: white;
+    content: "\2714";
+    border: 0.1em solid #333;
+    border-radius: 10px;
+    display: inline-block;
+    width: 17px;
+    height: 18px;
+    padding-left: 3px;
+    padding-top: 2px;
+    vertical-align: bottom;
+    color: transparent;
+    transition: .2s;
+}
+  
+input[type=checkbox] + label:active:before {
+    transform: scale(0);
+}
+  
+input[type=checkbox]:checked + label:before {
+    background-color: #1b95e0;
+    border-color: #1b95e0;
+    color: #fff;
 }

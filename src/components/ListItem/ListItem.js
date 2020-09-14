@@ -6,13 +6,17 @@ import Button from '../Button/Button';
 export default function ListItem(props) {
     return (
         <div className="list-item">
-            <input type="checkbox" />
+            <div>
+                <input type="checkbox" id="fruit3" />
+                <label for="fruit3"></label>
+            </div>
+            
             <h3>Tarefa</h3>
             <Button className="primary">
-                <i class="fa fa-edit"></i>
+                <i className="fa fa-edit"></i>
             </Button>
             <Button className="danger">
-                <i class="fa fa-trash"></i>
+                <i className="fa fa-trash"></i>
             </Button>
         </div>
     );
