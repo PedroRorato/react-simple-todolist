@@ -7,6 +7,6 @@ input {
 
 .input-group {
     display: grid;
-    grid-template-columns: 1fr 80px;
+    grid-template-columns: minmax(0, 1fr) 80px;
     column-gap: 1rem;
 }
