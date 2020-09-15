@@ -12,7 +12,7 @@ export default function ListItem(props) {
             </div>
             
             <h3>{props.title}</h3>
-            <Button className="primary">
+            <Button className="primary" onClick={props.onClickUpdate} >
                 <i className="fa fa-edit"></i>
             </Button>
             <Button className="danger" onClick={props.onClickDelete} >

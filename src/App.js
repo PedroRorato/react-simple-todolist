@@ -17,7 +17,8 @@ function App() {
 
   const [tasks, setTasks] = useState([]);
   const [errorAlert, setErrorAlert] = useState('');
-  const [modalDeleteStatus, setModalDeleteStatus] = useState('show');
+  const [modalDeleteStatus, setModalDeleteStatus] = useState('');
+  const [modalUpdateStatus, setModalUpdateStatus] = useState('');
   const [modalDeleteItem, setModalDeleteItem] = useState({id: 0, title: ''});
   const [modalUpdateItem, setModalUpdateItem] = useState({id: 0, title: ''});
 
@@ -47,21 +48,32 @@ function App() {
     inputTask.value = '';
   }
 
-  const handleDeleteTask = async (id) => {
+  const handleDeleteTask = async () => {
     
-    await api.delete(`/tasks/${id}`);
-
-    setTasks([...tasks.filter(task => task.id !== id)]);
+    await api.delete(`/tasks/${modalDeleteItem.id}`);
+    setTasks([...tasks.filter(task => task.id !== modalDeleteItem.id)]);
     setModalDeleteStatus('');
+  }
+
+  const handleUpdateTask = async (id) => {
+    
+    await api.put(`/tasks/${id}`);
+    setTasks([...tasks.filter(task => task.id !== id)]);
+    setModalUpdateStatus('');
   }
 
   const showDeleteModal = (id) => {
 
-    const task = tasks.find(element => element.id == id);
-
+    const task = tasks.find(element => element.id === id);
     setModalDeleteItem(task);
-
     setModalDeleteStatus('show');
+  }
+
+  const showUpdateModal = (id) => {
+
+    const task = tasks.find(element => element.id === id);
+    setModalUpdateItem(task);
+    setModalUpdateStatus('show');
   }
 
 
@@ -80,21 +92,33 @@ function App() {
                   key={task.id}
                   id={task.id}
                   title={task.title} 
-                  onClickDelete={() => showDeleteModal(task.id)} 
-
+                  onClickDelete={() => showDeleteModal(task.id)}
+                  onClickUpdate={() => showUpdateModal(task.id)} 
                 />
               )) 
             }
           </List>
         </Card>
       </Container>
+
       <Modal status={modalDeleteStatus} title="Delete Task" closeModal={() => setModalDeleteStatus('')}>
         <div className="modal-body">
           <h3>Tem certeza que deseja excluir a tarefa <strong>"{modalDeleteItem.title}"</strong>?</h3>
         </div>
         <div className="modal-footer">
           <Button onClick={() => setModalDeleteStatus('')} className="secondary btn-lg px">CLOSE</Button>
-          <Button onClick={() => handleDeleteTask(modalDeleteItem.id)} className="danger btn-lg px">DELETE</Button>
+          <Button onClick={() => handleDeleteTask()} className="danger btn-lg px">DELETE</Button>
+        </div>
+      </Modal>
+
+      <Modal status={modalUpdateStatus} title="Update Task" closeModal={() => setModalUpdateStatus('')}>
+        <div className="modal-body">
+          <label>Title</label>
+          <input name="title" type="text" value="" placeholder="Ex: Plan family trip..." />
+        </div>
+        <div className="modal-footer">
+          <Button onClick={() => setModalUpdateStatus('')} className="secondary btn-lg px">CLOSE</Button>
+          <Button onClick={() => handleDeleteTask(modalDeleteItem.id)} className="primary btn-lg px">UPDATE</Button>
         </div>
       </Modal>
     </>

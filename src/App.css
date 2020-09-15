@@ -10,3 +10,11 @@ body {
   font: 16px sans-serif;
   color: #333;
 }
+
+input {
+  border: 1px solid #bbb;
+  border-radius: .25rem;
+  font-size: 1rem;
+  padding: .5rem .75rem;
+  width: 100%;
+}

@@ -58,3 +58,7 @@
 .show {
     display: flex;
 }
+
+.input-form {
+    width: 100%;
+}
