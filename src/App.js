@@ -26,7 +26,6 @@ function App() {
 
     api.get('/tasks').then( response => {
       setTasks(response.data);
-      console.log(response.data)
     });
 
   }, []);
@@ -55,10 +54,12 @@ function App() {
     setModalDeleteStatus('');
   }
 
-  const handleUpdateTask = async (id) => {
-    
-    await api.put(`/tasks/${id}`);
-    setTasks([...tasks.filter(task => task.id !== id)]);
+  const handleUpdateTask = async () => {
+
+    const form = document.querySelector("#update-form");
+    await api.put(`/tasks/${modalUpdateItem.id}`, { title: form.title.value });
+    const taskIndex = tasks.findIndex((element => element.id === modalUpdateItem.id));
+    tasks[taskIndex].title = form.title.value;
     setModalUpdateStatus('');
   }
 
@@ -75,7 +76,6 @@ function App() {
     setModalUpdateItem(task);
     setModalUpdateStatus('show');
   }
-
 
   return (
     <>
@@ -112,14 +112,16 @@ function App() {
       </Modal>
 
       <Modal status={modalUpdateStatus} title="Update Task" closeModal={() => setModalUpdateStatus('')}>
-        <div className="modal-body">
-          <label>Title</label>
-          <input name="title" type="text" value="" placeholder="Ex: Plan family trip..." />
-        </div>
-        <div className="modal-footer">
-          <Button onClick={() => setModalUpdateStatus('')} className="secondary btn-lg px">CLOSE</Button>
-          <Button onClick={() => handleDeleteTask(modalDeleteItem.id)} className="primary btn-lg px">UPDATE</Button>
-        </div>
+        <form id="update-form">
+          <div className="modal-body">
+            <label>Title</label>
+            <input name="title" type="text" defaultValue={modalUpdateItem.title} placeholder="Ex: Plan family trip..." />
+          </div>
+          <div className="modal-footer">
+            <Button onClick={() => setModalUpdateStatus('')} className="secondary btn-lg px">CLOSE</Button>
+            <Button onClick={() => handleUpdateTask()} className="primary btn-lg px">UPDATE</Button>
+          </div>
+        </form>
       </Modal>
     </>
   );
