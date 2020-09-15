@@ -4,15 +4,16 @@ import './Modal.css';
 import Card from '../Card/Card';
 
 export default function Modal(props) {
+    const classNames = "modal-container " + props.status;
+
     return (
-        <div className="modal-container">
+        <div className={classNames}>
             <Card>
                 <div className="modal-header">
-                    <h2>Título do Card</h2>
+                    <h2>{props.title}</h2>
                     <i className="fa fa-times" onClick={props.closeModal}></i>
                 </div>
-                <hr/>
-                <hr/>
+                {props.children}
             </Card>
         </div>
     );

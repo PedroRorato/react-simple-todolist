@@ -1,6 +1,6 @@
 .modal-container {
     background-color: rgba(0,0,0,0.7);
-    display: flex;
+    display: none;
     align-items: center;
     justify-content: center;
 
@@ -11,11 +11,17 @@
     width: 100vw;
 }
 
+.modal-container h3 {
+    font-weight: normal;
+}
+
 .modal-container .card {
     height: fit-content;
 }
 
 .modal-header {
+    border-bottom: 1px solid #ccc;
+    padding-bottom: .75rem;
     display: grid;
     grid-template-columns: minmax(0, 1fr) 18px;
     column-gap: 1rem;
@@ -32,6 +38,21 @@
     opacity: .5;
 }
 
-.modal-container hr {
-    margin: .75rem 0;
+.modal-body {
+    border-bottom: 1px solid #ccc;
+    padding: 1rem 0;
+}
+
+
+
+.modal-footer {
+    padding: 1rem 0 .25rem;
+}
+
+.modal-footer button + button{
+    margin-left: 1rem;
+}
+
+.show {
+    display: flex;
 }

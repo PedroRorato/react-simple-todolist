@@ -13,12 +13,23 @@ button:hover {
     opacity: .7;
 }
 
-.primary {
-    background-color: #1b95e0;
-    border: 1px solid #1b95e0;
+.btn-lg {
+    border-radius: .25rem;
+    font-size: 1.25rem;
+    padding: .5rem 0;
 }
 
 .danger {
     background-color: #dc3545;
     border: 1px solid #dc3545;
+}
+
+.primary {
+    background-color: #1b95e0;
+    border: 1px solid #1b95e0;
+}
+
+.secondary {
+    background-color: #6c757d;
+    border: 1px solid #6c757d;
 }
