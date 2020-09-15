@@ -19,6 +19,11 @@ button:hover {
     padding: .5rem 0;
 }
 
+.px {
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
 .danger {
     background-color: #dc3545;
     border: 1px solid #dc3545;

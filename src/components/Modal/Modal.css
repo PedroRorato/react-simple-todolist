@@ -46,6 +46,8 @@
 
 
 .modal-footer {
+    display: flex;
+    justify-content: flex-end;
     padding: 1rem 0 .25rem;
 }
 

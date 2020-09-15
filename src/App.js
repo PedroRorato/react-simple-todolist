@@ -16,8 +16,10 @@ import Button from './components/Button/Button';
 function App() {
 
   const [tasks, setTasks] = useState([]);
-  const [errorAlert, setErrorAlert] = useState();
+  const [errorAlert, setErrorAlert] = useState('');
   const [modalDeleteStatus, setModalDeleteStatus] = useState('show');
+  const [modalDeleteItem, setModalDeleteItem] = useState({id: 0, title: ''});
+  const [modalUpdateItem, setModalUpdateItem] = useState({id: 0, title: ''});
 
   useEffect( () => {
 
@@ -41,16 +43,23 @@ function App() {
 
     const newTask = response.data;
     setTasks([...tasks, newTask ]);
-    setErrorAlert();
+    setErrorAlert('');
     inputTask.value = '';
+  }
+
+  const handleDeleteTask = async (id) => {
+    
+    await api.delete(`/tasks/${id}`);
+
+    setTasks([...tasks.filter(task => task.id !== id)]);
+    setModalDeleteStatus('');
   }
 
   const showDeleteModal = (id) => {
 
     const task = tasks.find(element => element.id == id);
 
-    const strongElement = document.querySelector("#delete-title");
-    strongElement.innerHTML = `"${task.title}"`;
+    setModalDeleteItem(task);
 
     setModalDeleteStatus('show');
   }
@@ -79,15 +88,14 @@ function App() {
           </List>
         </Card>
       </Container>
-      <Modal status={modalDeleteStatus} title="Delete Task" closeModal={() => setModalDeleteStatus()}>
+      <Modal status={modalDeleteStatus} title="Delete Task" closeModal={() => setModalDeleteStatus('')}>
         <div className="modal-body">
-          <h3>Tem certeza que deseja excluir a tarefa <strong id="delete-title"></strong>?</h3>
+          <h3>Tem certeza que deseja excluir a tarefa <strong>"{modalDeleteItem.title}"</strong>?</h3>
         </div>
         <div className="modal-footer">
-          <Button className="secondary btn-lg">CLOSE</Button>
-          <Button className="danger btn-lg">DELETE</Button>
+          <Button onClick={() => setModalDeleteStatus('')} className="secondary btn-lg px">CLOSE</Button>
+          <Button onClick={() => handleDeleteTask(modalDeleteItem.id)} className="danger btn-lg px">DELETE</Button>
         </div>
-        
       </Modal>
     </>
   );
